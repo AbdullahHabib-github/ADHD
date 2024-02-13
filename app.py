@@ -1,5 +1,4 @@
 import streamlit as st 
-import time 
 
 from utils import setup
 
@@ -64,4 +63,7 @@ if uploaded_file is not None:
         with st.chat_message("assistant", avatar='🤖'):  
             response = generate_response(prompt_input=prompt, userid=user_id)
             st.write(response)
+        
+        message = {"role": "assistant", "content": response}
+        st.session_state.messages.append(message)    
         st.session_state.agent_with_chat_history = agent_with_chat_history

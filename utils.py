@@ -1,8 +1,5 @@
-from langchain_openai import ChatOpenAI
 from langchain_community.vectorstores import Chroma
 from langchain_openai import OpenAIEmbeddings
-from langchain.memory import ConversationBufferMemory
-from langchain.chains import ConversationalRetrievalChain
 from langchain.text_splitter import CharacterTextSplitter
 from PyPDF2 import PdfReader
 #ssfrom openai import Op
@@ -27,7 +24,7 @@ def process_text(text):
     chunks = text_splitter.split_text(text) 
 
     embeddings = OpenAIEmbeddings()
-    knowledgeBase = Chroma.from_texts(chunks, embeddings)
+    knowledgeBase = Chroma.from_texts(chunks, embeddings,persist_directory="chroma_db")
 
     return knowledgeBase
 
@@ -53,8 +50,6 @@ def create_agent_with_chat_history():
     RTOKEN= api_key
 
     from langchain.tools.retriever import create_retriever_tool
-    from langchain_community.vectorstores import Chroma
-    from langchain_openai import OpenAIEmbeddings
     embeddings = OpenAIEmbeddings(openai_api_key=RTOKEN)
     docsearch = Chroma(persist_directory="chroma_db", embedding_function=embeddings)
     retriever = docsearch.as_retriever()
@@ -111,6 +106,7 @@ def setup():
         for page in pdf.pages:
             text += page.extract_text()
 
+        docsearch = process_text(text)
         agent_with_chat_history = create_agent_with_chat_history()
         
         if 'agent_with_chat_history' not in st.session_state:
