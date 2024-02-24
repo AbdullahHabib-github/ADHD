@@ -1,0 +1,6 @@
+# Exclude temporary and build files
+venv/
+__pycache__/
+.gitignore
+.git
+README.md
