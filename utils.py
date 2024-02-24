@@ -13,7 +13,13 @@ import shutil
 
 
 #############################
-os.environ["GOOGLE_API_KEY"] = "AIzaSyDweQ-DWAac8aoVvlir_uRdlioF4rp9Bb8"
+with open("google_api.txt", 'r') as file:
+    for line in file:
+        RTOKEN= (line)
+
+
+os.environ["GOOGLE_API_KEY"] = RTOKEN
+
 
 def create_vector_db(text,persist_directory="chroma_db"):
     text_splitter = CharacterTextSplitter(
@@ -128,49 +134,49 @@ def create_agent_with_chat_history_db(persist_directory="chroma_db",break_down= 
 
 
 
-def create_agent_with_chat_history_no_db():
+# def create_agent_with_chat_history_no_db():
     
-    llm = ChatGoogleGenerativeAI(temperature=0, model="gemini-pro",convert_system_message_to_human=True)
-    from langchain import hub
-    from langchain.prompts import PromptTemplate
-    from langchain.prompts import SystemMessagePromptTemplate
-    BASE_INSTRUCTION = "always say that YOU ARE A COW"
-    prompt = hub.pull("hwchase17/openai-tools-agent")
-    prompt.messages[0]=SystemMessagePromptTemplate(prompt=PromptTemplate(input_variables=[], template=BASE_INSTRUCTION))
+#     llm = ChatGoogleGenerativeAI(temperature=0, model="gemini-pro",convert_system_message_to_human=True)
+#     from langchain import hub
+#     from langchain.prompts import PromptTemplate
+#     from langchain.prompts import SystemMessagePromptTemplate
+#     BASE_INSTRUCTION = "always say that YOU ARE A COW"
+#     prompt = hub.pull("hwchase17/openai-tools-agent")
+#     prompt.messages[0]=SystemMessagePromptTemplate(prompt=PromptTemplate(input_variables=[], template=BASE_INSTRUCTION))
 
 
 
 
-    def _format_chat_history(chat_history: List[Tuple[str, str]]):
-        return chat_history
+#     def _format_chat_history(chat_history: List[Tuple[str, str]]):
+#         return chat_history
 
 
-    agent = (
-        {
-            "input": lambda x: x["input"],
-            "chat_history": lambda x: _format_chat_history(x["chat_history"]),
-            "agent_scratchpad": lambda x: format_to_openai_function_messages(
-                x["intermediate_steps"]
-            ),
-        }
-        | prompt
-        | llm
-        | OpenAIFunctionsAgentOutputParser()
-    )
+#     agent = (
+#         {
+#             "input": lambda x: x["input"],
+#             "chat_history": lambda x: _format_chat_history(x["chat_history"]),
+#             "agent_scratchpad": lambda x: format_to_openai_function_messages(
+#                 x["intermediate_steps"]
+#             ),
+#         }
+#         | prompt
+#         | llm
+#         | OpenAIFunctionsAgentOutputParser()
+#     )
 
 
 
-    message_history = ChatMessageHistory()
+#     message_history = ChatMessageHistory()
 
 
-    agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
-    agent_with_chat_history = RunnableWithMessageHistory(
-        agent_executor,
-        # This is needed because in most real world scenarios, a session id is needed
-        # It isn't really used here because we are using a simple in memory ChatMessageHistory
-        lambda session_id: message_history,
-        input_messages_key="input",
-        history_messages_key="chat_history",
-    )
+#     agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
+#     agent_with_chat_history = RunnableWithMessageHistory(
+#         agent_executor,
+#         # This is needed because in most real world scenarios, a session id is needed
+#         # It isn't really used here because we are using a simple in memory ChatMessageHistory
+#         lambda session_id: message_history,
+#         input_messages_key="input",
+#         history_messages_key="chat_history",
+#     )
 
-    return agent_with_chat_history
+#     return agent_with_chat_history
