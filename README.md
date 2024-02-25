@@ -8,7 +8,7 @@
     4. `pip install -r requirements.txt`
 - Adding Api Key
     1. Get your api key for Gemini from [Ai Studio](https://aistudio.google.com/app/apikey)
-    2. Paste your Gemini api key in the the [google_api.txt](https://github.com/AbdullahHabib-github/ADHD/Backend/google_api.txt) file.
+    2. Paste your Gemini api key in the the [google_api.txt](Backend/google_api.txt) file.
 
 - Add Credentials for Google Cloud Console
     1. Follow the steps at [GCP Documentations](https://cloud.google.com/docs/authentication/provide-credentials-adc#local-dev) to set up credentials for Google Cloud Platform.
