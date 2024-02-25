@@ -12,7 +12,7 @@ To run this BACKEND server locally, follow the following steps.
     2. Paste your Gemini api key in the the [google_api.txt](https://github.com/AbdullahHabib-github/ADHD/google_api.txt) file.
 
 - Add Credentials for Google Cloud Console
-    1. Get your Credentials (json file) from Goolge Cloud Console
+    1. Get your Credentials (json file) from Goolge Cloud Console.
     2. Place the json file in the base directory [Base Directory](https://github.com/AbdullahHabib-github/ADHD)
-- python app.py
-- The server is now live
+- Run `python app.py` in  the terminal/console to start the application.
+- The server is now live.
