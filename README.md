@@ -13,6 +13,6 @@
 - Add Credentials for Google Cloud Console
     1. Follow the steps at [GCP Documentations](https://cloud.google.com/docs/authentication/provide-credentials-adc#local-dev) to set up credentials for Google Cloud Platform.
     2. Get your Credentials (json file) from Goolge Cloud Console.
-    3. Place the json file in the base directory [Base Directory](https://github.com/AbdullahHabib-github/ADHD/Backend)
+    3. Place the json file in the backend base directory [Base Directory](Backend)
 - Run `python app.py` in  the terminal/console to start the application.
 - The local server is now live.
