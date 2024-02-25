@@ -15,4 +15,4 @@
     2. Get your Credentials (json file) from Goolge Cloud Console.
     3. Place the json file in the base directory [Base Directory](https://github.com/AbdullahHabib-github/ADHD/Backend)
 - Run `python app.py` in  the terminal/console to start the application.
-- The server is now live.
+- The local server is now live.
