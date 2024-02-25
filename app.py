@@ -21,7 +21,6 @@ def generate_response(prompt_input,userid):
 
 @app.route('/upload_book', methods=['POST'])
 def upload_pdf():
-    print("lol")
     if 'pdf_file' not in request.files:
         return 400  # Error handling
     file = request.files['pdf_file']

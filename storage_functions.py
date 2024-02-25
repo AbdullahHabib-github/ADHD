@@ -2,7 +2,18 @@
 import os
 import shutil
 from google.cloud import storage
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "adhd-415110-5ffb2b65beea.json" 
+
+credentials_file = None
+# Iterate through all files to find the credentials file
+for filename in os.listdir(os.getcwd()):
+    # Check if the file ends with .json extension
+    if filename.endswith('.json'):
+        credentials_file = filename
+
+if not  credentials_file:
+    raise Exception ("Please download the credentials file from Cloud Console")
+
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = credentials_file 
 def upload_folder_to_cloud_storage_client(bucket_name="booksdb", source_folder_path= "chroma_db", destination_folder_path="chroma_db"):
     """Uploads a folder to a GCS bucket, preserving directory structure.
 
