@@ -1,5 +1,5 @@
-/venv
-/__pycache__
-/chroma_db
-test.py
-adhd-415110-5ffb2b65beea.json
+Backend/venv
+Backend/__pycache__
+Backend/chroma_db
+Backend/test.py
+Backend/adhd-415110-5ffb2b65beea.json
