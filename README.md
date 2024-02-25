@@ -1,4 +1,4 @@
-# BACKEND for ADHD
+# BACKEND for ADHD Focus
 
 To run this BACKEND server locally, follow the following steps. 
 
