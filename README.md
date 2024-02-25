@@ -1,4 +1,4 @@
-# ADHD
+# BACKEND for ADHD
 
 To run this BACKEND server locally, follow the following steps. 
 
@@ -15,4 +15,4 @@ To run this BACKEND server locally, follow the following steps.
     1. Get your Credentials (json file) from Goolge Cloud Console.
     2. Place the json file in the base directory [Base Directory](https://github.com/AbdullahHabib-github/ADHD)
 - Run `python app.py` in  the terminal/console to start the application.
-- The server is now live.
+- The local server is now live.
